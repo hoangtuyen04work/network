@@ -1,0 +1,27 @@
+<?mxl version="1.0" encoding="UTF-8"?>
+<decorators defaultdir="/decorators">
+	<!-- những url bắt đầu bằng /api sẽ không được áp dụng decorators -->
+    <exclude>
+
+        <pattern>/api*</pattern>
+
+    </exclude>
+	
+    <!--bất kỳ URL nào bắt đầu bằng "/admin" 
+        sẽ được áp dụng decorator này-->
+        
+    <!--Khi decorator "admin" được áp dụng, 
+        trang mẫu được sử dụng là "admin.jsp". 
+        Điều này có nghĩa là nội dung của 
+        các trang được yêu cầu bắt đầu bằng "/admin" 
+        sẽ được hiển thị bên trong trang "admin.jsp"-->
+    <decorator name="admin" page="admin.jsp">
+        <pattern>/admin*</pattern>
+    </decorator>
+
+    <decorator name="web" page="web/profile.jsp">
+        <pattern>/*</pattern>
+    </decorator>
+
+
+</decorators>
