@@ -1,9 +1,9 @@
 package com.hoangtuyen04work.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class User extends Model {
-
+    private String userId;
     private String userName;
     private String passWord;
     private String phoneNumber;
@@ -16,18 +16,23 @@ public class User extends Model {
     private Long numberPost;
     private Long numberFollowing;
     public User() {
-    	
+    	super();
+    	this.type = "USER";
+    	this.id = -1l;
+    	this.numberFollower = 1l;
+    	this.numberFollowing = 1l;
+    	this.numberPost = 1l;
     }
 
     public User(String userName, String passWord, Timestamp birthDay, String birthPlace,
-            String livePlace, String shortDescription, String type) {
+            String livePlace, String shortDescription) {
         this.userName = userName;
         this.passWord = passWord;
         this.birthDay = birthDay;
         this.birthPlace = birthPlace;
         this.livePlace = livePlace;
         this.shortDescription = shortDescription;
-        this.type = type;
+        this.type = "USER";
     }
 
     
@@ -115,6 +120,10 @@ public class User extends Model {
     public void setType(String type) {
         this.type = type;
     }
+    
+    public void setType() {
+    	this.type = "USER";
+    }
 
 
     public String getPhoneNumber() {
@@ -123,6 +132,14 @@ public class User extends Model {
 
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 
 }

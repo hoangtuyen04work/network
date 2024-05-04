@@ -1,178 +1,178 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
-<%@include file="/common/taglib.jsp"%><!DOCTYPE html>
-<%@ include file="/decorators/web/profile.jsp" %>
+	pageEncoding="UTF-8"%>
+<%@include file="/common/taglib.jsp"%>
+<!DOCTYPE html>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <html>
+
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<meta charset="UTF-8">
-<!--name of page-->
-<title>WEB</title>
+	<meta charset="UTF-8">
+	<!--name of page-->
+	<title>profile</title>
 </head>
+
 <body>
-    <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light">
-            <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="#!">Start Bootstrap</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li><hr class="dropdown-divider" /></li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    
-                </div>
-            </div>
-        </nav>
-        <!-- Product section-->
-        <section class="py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="row gx-4 gx-lg-5 align-items-center">
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="template/image/image4.png" alt="..." /></div>
-                    <div class="col-md-6">
-                        <!--div class="small mb-1">SKU: BST-498</div-->
-                        <h1 class="display-5 fw-bolder">Profile</h1>
-                        <!--div class="fs-5 mb-5">
-                            <span class="text-decoration-line-through">$45.00</span>
-                            <span>$40.00</span>
-                        </div-->
-                        <p class="lead">Your story</p>
-                        <!--div class="d-flex">
-                            <input class="form-control text-center me-3" id="inputQuantity" type="num" value="1" style="max-width: 3rem" />
-                            <button class="btn btn-outline-dark flex-shrink-0" type="button">
-                                <i class="bi-cart-fill me-1"></i>
-                                Add to cart
-                            </button>
-                        </div-->
-                    </div>
-                </div>
-            </div>
-        </section>
-        <!-- Related items section-->
-        <section class="py-5 bg-light">
-            <div class="container px-4 px-lg-5 mt-5">
-                <h2 class="fw-bolder mb-4">Manage posts</h2>
-                <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Proadduct image-->
-                            <img src="template/image/image.png" class="msg-photo" alt="Image" />
-                            <!-- Product details-->
-                            
-<!--div class="card-body p-4">
-                                <div class="text-center">
-                                    <Product name>
-                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                    <Product price>
-                                    $40.00 - $80.00
-                                </div>
-                            </div-->
+	<div class="container emp-profile">
+		<form method="post">
+			<div class="row">
+				<div class="col-md-4">
+					<div class="profile-img">
+						<img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS52y5aInsxSm31CvHOFHWujqUx_wWTS9iM6s7BAm21oEN_RiGoog"
+							alt="" />
+						<div class="file btn btn-lg btn-primary">
+							Change Photo <input type="file" name="file" />
+						</div>
+					</div>
+				</div>
+				<div class="col-md-6">
+					<div class="profile-head">
+						<a>${USER.userName}</a>
+						<h6>${USER.userId}</h6>
+						<div id="profileStats">
+							<p style="display: inline-block; margin-right: 10px;">
+								Follower: ${USER.numberFollower}<span id="followerCount"></span>
+							</p>
+							<p style="display: inline-block; margin-right: 10px;">
+								Posts: ${USER.numberPost}<span id="postCount"></span>
+							</p>
+							<p style="display: inline-block;">
+								Following: ${USER.numberFollowing}<span id="followingCount"></span>
+							</p>
+						</div>
 
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Detail</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
+					</div>
+				</div>
+				<inputtype="submit" class="col-md-2">
+					<a class="nav-link btn btn-primary" href='<c:url value="/home"/>'>Home</a>
+					<a class="nav-link btn btn-success" href='<c:url value="/editprofile"/>'>Edit Profile</a>
+					<a class="nav-link btn btn-danger" href='<c:url value="/signin?action=signout"/>'>Sign out</a>
 
-<!--div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div-->
+				</inputtype="submit">
 
-                            <!-- Product image-->
-                            <img src="template/image/image1.png" class="msg-photo" alt="Image" />
+			</div>
+			<div class="row">
+				<div class="col-md-4">
+					<div class="profile-work">
+						<p>WORK LINK</p>
+						<a href="">Website Link</a><br /> <a href="">Bootsnipp
+							Profile</a><br /> <a href="">Bootply Profile</a>
+						<p>SKILLS</p>
+						<a href="">Web Designer</a><br /> <a href="">Web Developer</a><br />
+						<a href="">WordPress</a><br /> <a href="">WooCommerce</a><br />
+						<a href="">PHP, .Net</a><br />
+					</div>
+				</div>
+				<div class="col-md-8">
+					<div class="tab-content profile-tab" id="myTabContent">
+						<div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+							<div class="row">
+								<div class="col-md-6">
+									<label>User Id</label>
+								</div>
+								<div class="col-md-6">
+									<p>${USER.userId}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Name</label>
+								</div>
+								<div class="col-md-6">
+									<p>${USER.userName}</p>
+								</div>
+							</div>
 
-                            <!-- Product details-->
-<!--div class="card-body p-4">
-                                <div class="text-center">
-                                    < Product name>
-                                    <h5 class="fw-bolder">Special Item</h5>
-                                    <Product reviews>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    < Product price>
-                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                    $18.00
-                                </div>
-                            </div-->
-
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Detail</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Sale badge-->
-
-<!--div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div-->
-                            
-                            <!-- Product image-->
-                            <img src="template/image/image2.png" class="msg-photo" alt="Image" />
-                            <!-- Product details-->
-<!--div class="card-body p-4">
-                                <div class="text-center">
-                                    <Product name>
-                                    <h5 class="fw-bolder">Sale Item</h5>
-                                    <Product price>
-                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                    $25.00
-                                </div>
-                            </div-->
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Detail</a></div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col mb-5">
-                        <div class="card h-100">
-                            <!-- Product image-->
-                            <img src="template/image/image3.png" class="msg-photo" alt="Image" />
-                            <!-- Product details-->
-
-<!--div class="card-body p-4">
-                                <div class="text-center">
-                                    <Product name>
-                                    <h5 class="fw-bolder">Popular Item</h5>
-                                    <Product reviews>
-                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                        <div class="bi-star-fill"></div>
-                                    </div>
-                                    <Product price>
-                                    $40.00
-                                </div>
-                            </div-->
-                            <!-- Product actions-->
-                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Detail</a></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Phone</label>
+								</div>
+								<div class="col-md-6">
+									<p>${USER.phoneNumber}</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Birth Day</label>
+								</div>
+								<div class="col-md-6">
+									<c:if test="${empty USER.birthDay}">
+										<p>Blank</p>
+									</c:if>
+									<c:if test="${not empty USER.birthDay}">
+										<p>${USER.birthDay}</p>
+									</c:if>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Description</label>
+								</div>
+								<div class="col-md-6">
+									<c:if test="${empty USER.birthDay}">
+										<p>Blank</p>
+									</c:if>
+									<c:if test="${not empty USER.birthDay}">
+										<p>${USER.shortDescription}</p>
+									</c:if>
+								</div>
+							</div>
+						</div>
+						<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+							<div class="row">
+								<div class="col-md-6">
+									<label>Experience</label>
+								</div>
+								<div class="col-md-6">
+									<p>Expert</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Hourly Rate</label>
+								</div>
+								<div class="col-md-6">
+									<p>10$/hr</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Total Projects</label>
+								</div>
+								<div class="col-md-6">
+									<p>230</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>English Level</label>
+								</div>
+								<div class="col-md-6">
+									<p>Expert</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-6">
+									<label>Availability</label>
+								</div>
+								<div class="col-md-6">
+									<p>6 months</p>
+								</div>
+							</div>
+							<div class="row">
+								<div class="col-md-12">
+									<label>Your Bio</label><br />
+									<p>Your detail description</p>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</form>
+	</div>
 
 </body>
+
 </html>

@@ -1,6 +1,6 @@
 package com.hoangtuyen04work.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Relation extends Model {
     private String relationId;

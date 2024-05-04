@@ -1,27 +1,24 @@
-<?mxl version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <decorators defaultdir="/decorators">
-	<!-- những url bắt đầu bằng /api sẽ không được áp dụng decorators -->
-    <exclude>
-
+    <!-- Any urls that are excluded will never be decorated by Sitemesh -->
+    <excludes>
         <pattern>/api*</pattern>
+    </excludes>
 
-    </exclude>
-	
-    <!--bất kỳ URL nào bắt đầu bằng "/admin" 
-        sẽ được áp dụng decorator này-->
-        
-    <!--Khi decorator "admin" được áp dụng, 
-        trang mẫu được sử dụng là "admin.jsp". 
-        Điều này có nghĩa là nội dung của 
-        các trang được yêu cầu bắt đầu bằng "/admin" 
-        sẽ được hiển thị bên trong trang "admin.jsp"-->
+    <!-- apply Sitemesh default template -->
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
-
-    <decorator name="web" page="web/profile.jsp">
-        <pattern>/*</pattern>
+    <decorator name="signup" page="signup.jsp">
+        <pattern>/signup*</pattern>
     </decorator>
-
-
+    <decorator name="signin" page="signin.jsp">
+        <pattern>/signin*</pattern>
+    </decorator>
+    <decorator name="web" page="web/profile.jsp">
+        <pattern>/profile*</pattern>
+    </decorator>
+	<decorator name="home" page="web/home.jsp">
+        <pattern>/home*</pattern>
+    </decorator>
 </decorators>

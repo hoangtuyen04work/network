@@ -1,6 +1,6 @@
 package com.hoangtuyen04work.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Post extends Model{
     private String idUser;
@@ -14,6 +14,9 @@ public class Post extends Model{
 	public void setNumberComment(Long numberComment) {
 		this.numberComment = numberComment;
 	}
+	public Post() {
+ 
+    }
 	public Post(String idUser, String content, Long numberEmotion) {
         this.idUser = idUser;
         this.content = content;

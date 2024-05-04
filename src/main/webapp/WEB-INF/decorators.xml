@@ -9,15 +9,16 @@
     <decorator name="admin" page="admin.jsp">
         <pattern>/admin*</pattern>
     </decorator>
-
-	<decorator name="signup" page="signup.jsp">
+    <decorator name="signup" page="signup.jsp">
         <pattern>/signup*</pattern>
     </decorator>
-	<decorator name="login" page="login.jsp">
-        <pattern>/signup*</pattern>
+    <decorator name="signin" page="signin.jsp">
+        <pattern>/signin*</pattern>
     </decorator>
     <decorator name="web" page="web/profile.jsp">
-        <pattern>/*</pattern>
+        <pattern>/profile*</pattern>
     </decorator>
-	
+	<decorator name="home" page="web/home.jsp">
+        <pattern>/home*</pattern>
+    </decorator>
 </decorators>

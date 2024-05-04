@@ -1,6 +1,6 @@
 package com.hoangtuyen04work.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class EmotionPost extends Model{
     private Long postId;

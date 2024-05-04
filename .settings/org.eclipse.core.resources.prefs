@@ -1,2 +1,4 @@
 eclipse.preferences.version=1
-encoding//src/main/java/com/hoangtuyen04work/controller/web/HomeController.java=UTF-8
+encoding//src/main/java/com/hoangtuyen04work/controller/web/ProfileController.java=UTF-8
+encoding//src/main/java/com/hoangtuyen04work/controller/web/SigninController.java=UTF-8
+encoding//src/main/java/com/hoangtuyen04work/dao/impl/GenericDAO.java=UTF-8

@@ -1,0 +1,130 @@
+CREATE DATABASE SocialNetwork
+
+USE SocialNetwork
+
+ALTER TABLE [user]
+ALTER COLUMN [shortdescription] VARCHAR(MAX);
+CREATE TABLE userpost (
+    userid BIGINT,
+    postid BIGINT,
+    viewed BIT  DEFAULT 0 ,
+    PRIMARY KEY (userid, postid),
+    FOREIGN KEY (userid) REFERENCES [user](id),
+    FOREIGN KEY (postid) REFERENCES post(id)
+);
+CREATE TABLE [user]
+(
+	[id]		BIGINT IDENTITY(1, 1) PRIMARY KEY NOT NULL ,
+	[userid]	VARCHAR(30) UNIQUE NOT NULL,
+	[username]	VARCHAR(50)  NOT NULL,
+	[password]	VARCHAR(30) NOT NULL,
+	[phonenumber] VARCHAR(30) NOT NULL,
+	[birthday]	DATETIME NULL,
+	[birthplace] VARCHAR(100) NULL,
+	[liveplace]	VARCHAR(100) NULL,
+	[shortdescription] TEXT  NULL,
+	[type]		VARCHAR(10) NULL,
+	[numberfollower]	BIGINT DEFAULT(0),
+	[numberpost] BIGINT DEFAULT(0),
+	[numberfollowing] BIGINT DEFAULT(0),
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [frienduser]
+(
+	[userid] VARCHAR(30) NOT NULL,
+	[friendid] VARCHAR(30) NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [comment]
+(	
+	[id] BIGINT IDENTITY(1 ,1) PRIMARY KEY NOT NULL,
+	[userid] VARCHAR(30) NOT NULL,
+	[postid] BIGINT NOT NULL,
+	[content] TEXT NOT NULL,
+	[numberemotion] BIGINT DEFAULT(0),
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [emotioncomment]
+(
+	
+	[userid] VARCHAR(30) NOT NULL,
+	[commentid] BIGINT NOT NULL,
+	[postid] BIGINT NOT NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [emotionpost]
+(
+	[userid] VARCHAR(30)  NOT NULL,
+	[postid] BIGINT NOT NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [follower]
+(
+	[userid] VARCHAR(30)  NOT NULL,
+	[followerid] VARCHAR(30) NOT NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+CREATE TABLE [network]
+(
+	[userid] VARCHAR(30)  NOT NULL,
+	[link] VARCHAR(100) NULL,
+	[namesocialnetwork] VARCHAR(100) NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+
+CREATE TABLE [post]
+(	
+	[id] BIGINT IDENTITY(1 ,1) PRIMARY KEY NOT NULL,
+	[userid] VARCHAR(30)  NOT NULL,
+	[content] TEXT NOT NULL,
+	[numbercomment] BIGINT DEFAULT(0),
+	[numberemotion] BIGINT DEFAULT(0),
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+
+CREATE TABLE [relation]
+(
+	[userid] VARCHAR(30)  NOT NULL,
+	[relationid] VARCHAR(30) NOT NULL,
+	[relationname] VARCHAR(30) NOT NULL,
+	[createddate] DATETIME NULL,
+	[deleteddate] DATETIME NULL,
+	[state] BIGINT DEFAULT(1),
+	[modifieddate] DATETIME NULL
+)
+alter table frienduser add constraint fk_frienduser_user foreign key (friendid) references [user](userid)
+alter table comment add constraint fk_comment_user foreign key (userid) references [user](userid)
+alter table comment add constraint fk_comment_post foreign key (postid) references post(id)
+alter table emotioncomment add constraint fk_emotioncomment_comment foreign key (commentid) references comment(id)
+alter table emotioncomment add constraint fk_emotioncomment_post foreign key (postid) references post(id)
+alter table emotionpost add constraint fk_emotionpost_user foreign key (userid) references [user](userid)
+alter table follower add constraint fk_follower_user1 foreign key (followerid) references [user](userid)
+alter table follower add constraint fk_follower_user2 foreign key (userid) references [user](userid)
+alter table network add constraint fk_network_user foreign key (userid) references [user](userid)
+alter table post add constraint fk_post_user foreign key (userid) references [user](userid)
+alter table relation add constraint fk_relation_user1 foreign key (userid) references [user](userid)
+alter table relation add constraint fk_relation_user2 foreign key (relationid) references [user](userid)

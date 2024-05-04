@@ -1,15 +1,16 @@
 package com.hoangtuyen04work.model;
 
-import java.security.Timestamp;
+import java.sql.Timestamp;
 
 public class Model {
-    private Long id;
-    private Timestamp createdDate;
-    private Timestamp deleteDate;
-    private Long state;
-    private Timestamp modifiedDate;
+    protected Long id;
+    protected Timestamp createdDate;
+    protected Timestamp deleteDate;
+    protected Long state;
+    protected Timestamp modifiedDate;
 
     public Model() {
+    	this.id = -1l;
     }
 
     public Model(Long id, Timestamp createdDate, Timestamp deleteDate, Long state, Timestamp modifiedDate) {
