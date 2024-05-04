@@ -14,7 +14,8 @@ import com.hoangtuyen04work.dao.IGenericDAO;
 import com.hoangtuyen04work.mapper.RowMapper;
 
 public class GenericDAO<T> implements IGenericDAO<T> {
-
+	
+	//I use sql server database and this method return a connection to database
 	@Override
 	public Connection getConnection() {
 		try {
@@ -28,6 +29,7 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 		}
 	}
 
+	// set parameter for statement
 	@Override
 	public void setParameters(PreparedStatement statement, Object... parameters) {
 		try {
@@ -51,6 +53,7 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 		}
 	}
 
+	// find anything by id
 	@Override
 	public T findById(String sql, RowMapper<T> rowMapper, Object... parameters) {
 		Connection connection = null;
@@ -87,6 +90,7 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 		return null;
 	}
 
+	// get anything by id
 	@Override
 	public T getById(String sql, RowMapper<T> rowMapper, Object... parameters) {
 		Connection connection = null;
@@ -136,6 +140,8 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 		return null; // Return null if no result or error occurred
 	}
 
+	
+	// add anything into database
 	@Override
 	public T set(String sql, RowMapper<T> rowMapper, Object... parameters) {
 		Connection connection = null;
@@ -182,6 +188,7 @@ public class GenericDAO<T> implements IGenericDAO<T> {
 		}
 	}
 
+	//get a list of any thing
 	@Override
 	public List<T> getList(String sql, RowMapper<T> rowMapper, Object... parameters) {
 		Connection connection = null;

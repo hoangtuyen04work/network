@@ -44,6 +44,7 @@ public class HomeController extends HttpServlet {
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
 		String action = req.getParameter("action");
+		//check alive user or not
 		userTmp = (User) SessionUtil.getInstance().getValue(req, "USER");
 		if(userTmp.getUserId() == null) {
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/signin.jsp");

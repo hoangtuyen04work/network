@@ -47,8 +47,6 @@ public class SigninController extends HttpServlet {
 	        {
 	            SessionUtil.getInstance().removeValue(req, "USER");
 	            resp.sendRedirect(req.getContextPath() + "/signin");
-//	            RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/signin.jsp");
-//	            requestDispatcher.forward(req, resp);
 	        } 
 	        else if (action.equals("signin") && usertmp == null) 
 	        {

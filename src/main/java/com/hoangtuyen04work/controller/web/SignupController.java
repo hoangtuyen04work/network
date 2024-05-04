@@ -37,19 +37,13 @@ public class SignupController extends HttpServlet {
 
 	@Override
 	protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		System.out.println("6");
 		String action = req.getParameter("action");
-		System.out.println(action);
 		if(action != null) {
-			System.out.println("7");
-
 			if(action.equals("signup")) {
-				System.out.println("8");
 	            resp.sendRedirect(req.getContextPath() + "/signup");
 			}
 		}
 		else {
-			System.out.println("9");
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/signup.jsp");
 			requestDispatcher.forward(req, resp);
 		}
@@ -58,22 +52,14 @@ public class SignupController extends HttpServlet {
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		String action = req.getParameter("action");
-		System.out.println("1");
-		System.out.println(action);
 		if(action != null)
 		{
-			System.out.println("1");
-
 			if(action.equals("signup")) 
 				
 			{
-				System.out.println("2");
-
 				userInput = FormUtil.toModel(User.class, req);
 				if(userService.checkUserExistence(userInput) == false)
 				{
-					System.out.println("3");
-
 					userService.addUser(userInput);
 					user = userService.findUserByUserId(userInput.getUserId(), userInput.getPassWord(), 1l);
 					SessionUtil.getInstance().putValue(req, "USER", user);
@@ -81,8 +67,6 @@ public class SignupController extends HttpServlet {
 				}
 				else
 				{
-					System.out.println("4");
-
 					resp.sendRedirect(req.getContextPath() + "/signup");
 				}
 				
@@ -90,8 +74,6 @@ public class SignupController extends HttpServlet {
 		}
 		else 
 		{	
-			System.out.println("5");
-
 			RequestDispatcher requestDispatcher = req.getRequestDispatcher("/views/signup.jsp");
 			requestDispatcher.forward(req, resp);
 		}

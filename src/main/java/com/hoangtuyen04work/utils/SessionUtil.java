@@ -1,7 +1,7 @@
 package com.hoangtuyen04work.utils;
 
 import javax.servlet.http.HttpServletRequest;
-
+// that method will controll session for my web
 public class SessionUtil {
 
 	private static SessionUtil sessionUtil = null;

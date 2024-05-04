@@ -9,6 +9,7 @@ import org.apache.commons.beanutils.BeanUtils;
 
 
 public class FormUtil {
+	// this method will mapping data in req with any structure you pass for clazz
 	@SuppressWarnings("unchecked")
 	public static <T> T toModel(Class<T> clazz, HttpServletRequest req) {
 		T object = null;
